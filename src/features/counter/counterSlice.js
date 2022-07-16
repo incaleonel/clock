@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
-  status: 'idle',
+  break_value: 5,
+  session_value:25,
+  
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -17,21 +18,20 @@ export const counterSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
+    increment: (state,action) => {
+      
+      state[action.payload + '_value'] += state[action.payload + '_value'] < 60 ? 1:0;
+      
     },
-    decrement: (state) => {
-      state.value -= 1;
+    decrement: (state,action) => {
+
+      state[action.payload + '_value'] -= state[action.payload + '_value'] > 1 ? 1:0;
     },
     
   },
   
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement} = counterSlice.actions;
 
 export default counterSlice.reducer;

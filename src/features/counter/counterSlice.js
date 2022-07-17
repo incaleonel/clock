@@ -28,12 +28,15 @@ export const counterSlice = createSlice({
       if(state.play){
         play( state.break_value , state.session_value );
       }else{
-        pause();
+        pause(false);
       }
     },
     restart: (state) => {
+        
       state.break_value = 5;
       state.session_value = 25;
+      pause(true);
+      state.play = false;
     }
     
   },

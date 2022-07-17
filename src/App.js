@@ -26,10 +26,10 @@ function App() {
       <div>
         <span id='timer-label'>Session</span>
         <span id='time-left'>{ timer }</span>
-        <span class="material-symbols-outlined"
+        <span className="material-symbols-outlined"
               id="start_stop"
               onClick={()=>dispatch(start_stop())}>play_circle</span>
-        <span class="material-symbols-outlined"
+        <span className="material-symbols-outlined"
               id="reset"
               onClick={()=>dispatch(restart())}>replay_circle_filled</span>
       </div>

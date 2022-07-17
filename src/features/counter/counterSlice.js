@@ -3,6 +3,8 @@ import {createSlice } from '@reduxjs/toolkit';
 const initialState = {
   break_value: 5,
   session_value:25,
+  display_counter: [25,'00'],
+  display_label:'Session'
   
 };
 
@@ -21,17 +23,28 @@ export const counterSlice = createSlice({
     increment: (state,action) => {
       
       state[action.payload + '_value'] += state[action.payload + '_value'] < 60 ? 1:0;
+      state.display_counter=[state.session_value,'00'];
       
     },
     decrement: (state,action) => {
 
       state[action.payload + '_value'] -= state[action.payload + '_value'] > 1 ? 1:0;
+      state.display_counter=[state.session_value,'00'];
     },
+    start_stop: (state) => {
+
+    },
+    restart: (state) => {
+      state.break_value= 5;
+      state.session_value=25;
+      state.display_counter=[25,'00'];
+      state.display_label='Session';
+    }
     
   },
   
 });
 
-export const { increment, decrement} = counterSlice.actions;
+export const { increment, decrement, start_stop, restart} = counterSlice.actions;
 
 export default counterSlice.reducer;

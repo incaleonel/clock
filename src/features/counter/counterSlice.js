@@ -1,18 +1,11 @@
 import {createSlice } from '@reduxjs/toolkit';
+import {play, pause} from './time'
 
 const initialState = {
   break_value: 5,
   session_value:25,
-  display_counter: [25,'00'],
-  display_label:'Session'
-  
+  play:false,
 };
-
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
 
 
 export const counterSlice = createSlice({
@@ -22,23 +15,25 @@ export const counterSlice = createSlice({
   reducers: {
     increment: (state,action) => {
       
-      state[action.payload + '_value'] += state[action.payload + '_value'] < 60 ? 1:0;
-      state.display_counter=[state.session_value,'00'];
+      state[action.payload + '_value'] += state[action.payload + '_value'] < 60 && !state.play? 1:0;
       
     },
     decrement: (state,action) => {
 
-      state[action.payload + '_value'] -= state[action.payload + '_value'] > 1 ? 1:0;
-      state.display_counter=[state.session_value,'00'];
+      state[action.payload + '_value'] -= state[action.payload + '_value'] > 1 && !state.play? 1:0;
+      
     },
     start_stop: (state) => {
-
+      state.play = !state.play;
+      if(state.play){
+        play( state.break_value , state.session_value );
+      }else{
+        pause();
+      }
     },
     restart: (state) => {
-      state.break_value= 5;
-      state.session_value=25;
-      state.display_counter=[25,'00'];
-      state.display_label='Session';
+      state.break_value = 5;
+      state.session_value = 25;
     }
     
   },

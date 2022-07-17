@@ -8,9 +8,9 @@ import './index.css';
 function App() {
     const break_value = useSelector((state) => state.counter.break_value);
     const session_value = useSelector((state) => state.counter.session_value);
-    const label = useSelector((state)=>state.counter.display_label);
-    const counter = useSelector((state)=>state.counter.display_counter);
     const dispatch = useDispatch();
+    const timer = session_value < 10 ?  '0' + session_value + ':00': '' + session_value + ':00';
+    
     
   return (
     <div className="App">
@@ -24,8 +24,8 @@ function App() {
                     value= {session_value}/>
       </section>
       <div>
-        <span id='timer-label'>{label}</span>
-        <span id='time-left'>{counter[0]+':'+counter[1]}</span>
+        <span id='timer-label'>Session</span>
+        <span id='time-left'>{ timer }</span>
         <span class="material-symbols-outlined"
               id="start_stop"
               onClick={()=>dispatch(start_stop())}>play_circle</span>

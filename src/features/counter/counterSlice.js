@@ -1,5 +1,5 @@
 import {createSlice } from '@reduxjs/toolkit';
-import {play, pause} from './time'
+import {play, pause, change} from './time'
 
 const initialState = {
   break_value: 5,
@@ -14,19 +14,23 @@ export const counterSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     increment: (state,action) => {
-      
-      state[action.payload + '_value'] += state[action.payload + '_value'] < 60 && !state.play? 1:0;
+      if(!state.play){
+        state[action.payload + '_value'] += state[action.payload + '_value'] < 60 && !state.play? 1:0;
+        change(state.break_value,state.session_value,action.payload);
+      }
       
     },
     decrement: (state,action) => {
-
-      state[action.payload + '_value'] -= state[action.payload + '_value'] > 1 && !state.play? 1:0;
+      if(!state.play){
+        state[action.payload + '_value'] -= state[action.payload + '_value'] > 1 && !state.play? 1:0;
+        change(state.break_value,state.session_value,action.payload);
+      }
       
     },
     start_stop: (state) => {
       state.play = !state.play;
       if(state.play){
-        play( state.break_value , state.session_value );
+        play( state.break_value , state.session_value);
       }else{
         pause(false);
       }

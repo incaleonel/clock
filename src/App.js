@@ -9,7 +9,7 @@ function App() {
     const break_value = useSelector((state) => state.counter.break_value);
     const session_value = useSelector((state) => state.counter.session_value);
     const dispatch = useDispatch();
-    const timer = session_value < 10 ?  '0' + session_value + ':00': '' + session_value + ':00';
+    
     
     
   return (
@@ -25,7 +25,7 @@ function App() {
       </section>
       <div className='display'>
         <span id='timer-label'>Session</span>
-        <span id='time-left'>{ timer }</span>
+        <span id='time-left'>25:00</span>
         <div>
               <span className="material-symbols-outlined"
                     id="start_stop"

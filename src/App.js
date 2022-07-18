@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <h1>25+5 Clock</h1>
-      <section>
+      <section className='box-lengthtime'>
         <LengthTime type='break' 
                     title='Break Length'
                     value= {break_value}  />
@@ -23,16 +23,19 @@ function App() {
                     title ='Session Length'
                     value= {session_value}/>
       </section>
-      <div>
+      <div className='display'>
         <span id='timer-label'>Session</span>
         <span id='time-left'>{ timer }</span>
-        <span className="material-symbols-outlined"
-              id="start_stop"
-              onClick={()=>dispatch(start_stop())}>play_circle</span>
-        <span className="material-symbols-outlined"
-              id="reset"
-              onClick={()=>dispatch(restart())}>replay_circle_filled</span>
+        <div>
+              <span className="material-symbols-outlined"
+                    id="start_stop"
+                    onClick={()=>dispatch(start_stop())}>play_circle</span>
+              <span className="material-symbols-outlined"
+                    id="reset"
+                    onClick={()=>dispatch(restart())}>replay_circle_filled</span>
+        </div>
       </div>
+      <audio id='beep' src='https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav'></audio>
     </div>
   );
 }

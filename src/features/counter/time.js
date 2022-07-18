@@ -7,10 +7,13 @@ var seconds = 0;
 var t;
 var t_left;
 var t_label;
+var audio;
 
 export function play( b_minutes ,s_minutes ){
     t_left = document.getElementById('time-left');
     t_label = document.getElementById('timer-label');
+    audio = document.getElementById('beep');
+    
     break_min = b_minutes;
     session_min = s_minutes; 
     timer();
@@ -24,6 +27,7 @@ function timer(){
     if(minutes=== 0 && seconds === 0){
         minutes =t_label.textContent === 'Session' ? break_min : session_min;
         t_label.textContent = t_label.textContent === 'Session' ? 'Break' : 'Session';
+        audio.play();
     }
     t = setTimeout(temp, 1000);
 
@@ -47,6 +51,8 @@ function subtract(){
 
 
 export function pause(restart){
+    t_left = document.getElementById('time-left');
+    
     clearTimeout(t);
     if(restart){
         minutes = 25;

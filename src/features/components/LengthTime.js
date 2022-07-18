@@ -1,14 +1,16 @@
 import { useDispatch } from 'react-redux'
 import { decrement, increment } from '../counter/counterSlice'
+import './LengthTime.css'
 
 export function LengthTime(props){
     const dispatch = useDispatch();
 
     return(
         
-    <div>
-        <h2 id={props.type+'-label'}>{props.title}</h2>
-        <div>
+    <div className='f-box'>
+        <h2 id={props.type+'-label'}
+            className='title'>{props.title}</h2>
+        <div className='handler-box'>
             <span className="material-symbols-outlined" 
                   id={props.type + '-decrement'} 
                   onClick={()=>dispatch(decrement(props.type))}>arrow_circle_down</span>

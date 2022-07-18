@@ -1,0 +1,19 @@
+.handler-box{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    user-select: none;
+    margin:auto;
+}
+.f-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    
+.material-symbols-outlined{
+    font-size: 4rem;
+    padding: 0;
+    margin:0;
+}

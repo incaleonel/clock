@@ -14,9 +14,11 @@ export const counterSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     increment: (state,action) => {
+      
       if(!state.play){
         state[action.payload + '_value'] += state[action.payload + '_value'] < 60 && !state.play? 1:0;
         change(state.Break_value,state.Session_value,action.payload);
+        
       }
       
     },

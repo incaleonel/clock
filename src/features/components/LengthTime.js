@@ -15,7 +15,7 @@ export function LengthTime(props){
                   id={props.type + '-decrement'} 
                   onClick={()=>dispatch(decrement(props.title))}>arrow_circle_down</span>
 
-            <span id={props.type+'-length'}>{props.value}</span>
+            <div id={props.type+'-length'}>{props.value}</div>
 
             <span className="material-symbols-outlined" 
                   id={props.type + '-increment'} 

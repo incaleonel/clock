@@ -6,21 +6,19 @@ import './index.css';
 
 
 function App() {
-    const break_value = useSelector((state) => state.counter.break_value);
-    const session_value = useSelector((state) => state.counter.session_value);
+    const break_value = useSelector((state) => state.counter.Break_value);
+    const session_value = useSelector((state) => state.counter.Session_value);
     const dispatch = useDispatch();
-    
-    
     
   return (
     <div className="App">
       <h1>25+5 Clock</h1>
       <section className='box-lengthtime'>
         <LengthTime type='break' 
-                    title='Break Length'
+                    title='Break'
                     value= {break_value}  />
         <LengthTime type='session' 
-                    title ='Session Length'
+                    title ='Session'
                     value= {session_value}/>
       </section>
       <div className='display'>

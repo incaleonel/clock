@@ -1,4 +1,6 @@
 
+
+
 var minutes;
 var break_min;
 var session_min;
@@ -12,8 +14,7 @@ var t_label;
 var audio;
 
 export function play( b_minutes ,s_minutes ){
-    
-    
+    nodo();
     
     break_min = b_minutes;
     session_min = s_minutes; 
@@ -34,18 +35,17 @@ export function play( b_minutes ,s_minutes ){
 }
 
 export function change(b,s,type){
-    t_left = document.getElementById('time-left');
-    if(state === 'Session' && type === 'session'){
+    nodo();
+    if(state === type && type ==='Session'){
         t_left.textContent = (s > 9 ? s : '0' + s)+ ':00';
         last_min_s = 0;
-    }else if(state === 'Break' && type === 'break'){
+    }else if(state === type && type === 'Break'){
         t_left.textContent = (b > 9 ? b : '0' + b)+ ':00';
         last_min_b = 0;
     }
 }
 function timer(){
-    t_label = document.getElementById('timer-label');
-    audio = document.getElementById('beep');
+   
     if(minutes=== 0 && seconds === 0){
         minutes = state === 'Session' ? break_min : session_min;
         state = state === 'Session' ? 'Break' : 'Session';
@@ -58,7 +58,7 @@ function timer(){
 
 }
 function temp(){
-    t_left = document.getElementById('time-left');
+    
         subtract();
         t_left.textContent = (minutes > 9 ? minutes : '0' + minutes)
                      + ':' + (seconds > 9 ? seconds : '0' + seconds);
@@ -73,14 +73,17 @@ function subtract(){
             seconds--;
         }
 }
-
+function nodo(){
+    t_left=document.getElementById('time-left');
+    t_label = document.getElementById('timer-label');
+    audio= document.getElementById('beep');
+}
 
 export function pause(restart){
-    t_left = document.getElementById('time-left');
-    t_label = document.getElementById('timer-label');
+    nodo();
     clearTimeout(t);
     if(restart){
-        audio = document.getElementById('beep');
+        console.log(audio);
         audio.pause();
         audio.currentTime = 0;
         minutes = 25;

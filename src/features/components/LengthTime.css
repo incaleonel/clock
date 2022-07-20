@@ -3,17 +3,18 @@
     align-items: center;
     font-size: 2rem;
     user-select: none;
-    margin:auto;
 }
 .f-box{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 2rem 4rem;
 }
     
-.material-symbols-outlined{
-    font-size: 4rem;
-    padding: 0;
-    margin:0;
+.down:active{
+    color:rgb(174, 13, 13);
+}
+.up:active{
+    color:rgb(4, 182, 4);
 }
